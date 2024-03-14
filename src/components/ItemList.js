@@ -8,6 +8,8 @@ function ItemList(props) {
       {props.itemList.map((item, index) =>
         <Item name={item.name}
           description={item.description}
+          color={item.color}
+          size={item.size}
           quantity={item.quantity}
           key={index}/>
       )}

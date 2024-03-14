@@ -8,6 +8,8 @@ function NewItemForm(props) {
     props.onNewItemCreation({
       name: event.target.name.value,
       description: event.target.description.value,
+      color: event.target.color.value,
+      size: event.target.size.value,
       quantity: event.target.quantity.value,
       id: v4()
     });
@@ -26,6 +28,16 @@ function NewItemForm(props) {
           type="text"
           name="description"
           placeholder="Description"/>
+        <br/>
+        <input
+          type="text"
+          name="color"
+          placeholder="Color"/>
+        <br/>
+        <input
+          type="text"
+          name="size"
+          placeholder="Size"/>
         <br/>
         <input
           type="number"
