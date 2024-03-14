@@ -11,9 +11,26 @@ class ItemControl extends React.Component {
     };
   }
 
+  handleClick = () => {
+    this.setState(prevState => ({formVisibleOnPage: !prevState.formVisibleOnPage}));
+  }
+
   render() {
+    let currentlyVisibleState = null;
+    let buttonText = null;
+    if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewItemForm/>
+      buttonText = "Return to Item List";
+    } else {
+      currentlyVisibleState = <ItemList/>
+      buttonText = "Add Item";
+    }
+
     return (
-      <React.Fragment></React.Fragment>
+      <React.Fragment>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </React.Fragment>
     );
   }
 
