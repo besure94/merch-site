@@ -8,7 +8,8 @@ class ItemControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainItemList: []
+      mainItemList: [],
+      selectedItem: null
     };
   }
 
@@ -19,6 +20,11 @@ class ItemControl extends React.Component {
   handleAddingNewItemToList = (newItem) => {
     const newMainItemList = this.state.mainItemList.concat(newItem);
     this.setState({mainItemList: newMainItemList, formVisibleOnPage: false });
+  }
+
+  handleChangingSelectedItem = (id) => {
+    const selectedItem = this.state.mainItemList.filter(ticket => ticket.id === id)[0];
+    this.setState({selectedItem: selectedItem});
   }
 
   render() {
