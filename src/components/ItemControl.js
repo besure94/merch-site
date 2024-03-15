@@ -1,6 +1,7 @@
 import React from "react";
 import NewItemForm from "./NewItemForm";
 import ItemList from "./ItemList";
+import ItemDetail from "./ItemDetail";
 
 class ItemControl extends React.Component {
 
@@ -14,7 +15,16 @@ class ItemControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState(prevState => ({formVisibleOnPage: !prevState.formVisibleOnPage}));
+    if (this.state.selectedItem != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedItem: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
   }
 
   handleAddingNewItemToList = (newItem) => {
@@ -30,11 +40,15 @@ class ItemControl extends React.Component {
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
+
+    if (this.state.selectedItem != null) {
+      currentlyVisibleState = <ItemDetail item = {this.state.selectedItem}/>
+      buttonText = "Return to Item List";
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
       buttonText = "Return to Item List";
     } else {
-      currentlyVisibleState = <ItemList itemList={this.state.mainItemList}/>;
+      currentlyVisibleState = <ItemList itemList={this.state.mainItemList} onItemSelection={this.handleChangingSelectedItem}/>;
       buttonText = "Add Item";
     }
 
