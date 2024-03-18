@@ -14,13 +14,13 @@ function ItemDetail(props) {
       <h4>Quantity: {item.quantity}</h4>
 
       {item.quantity === 0 ? (
-        <h1>Out of stock</h1>
+        <React.Fragment>
+          <h1>Out of stock</h1>
+          <button onClick={() => onClickingRestock(item)}>Restock</button>
+        </React.Fragment>
       ) : (
         <button onClick={() => onClickingBuy(item)}>Buy</button>
       )}
-
-      <br/>
-      <button onClick={() => onClickingRestock(item)}>Restock</button>
       <br/>
       <button onClick={() => onClickingEdit(item.id)}>Edit Item</button>
       <br/>

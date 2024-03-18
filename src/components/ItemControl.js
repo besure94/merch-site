@@ -45,7 +45,7 @@ class ItemControl extends React.Component {
   }
 
   handleRestockClick = (itemToRestock) => {
-    const restockedItem = {...itemToRestock, quantity: itemToRestock.quantity += 1};
+    const restockedItem = {...itemToRestock, quantity: itemToRestock.quantity += 25};
     const editedMainItemList = this.state.mainItemList
     .filter(item => item.id !== this.state.selectedItem.id)
     .concat(restockedItem);
