@@ -40,8 +40,18 @@ class ItemControl extends React.Component {
     .filter(item => item.id !== this.state.selectedItem.id)
     .concat(boughtItem);
     this.setState({
-      mainItemList: editedMainItemList,
-    })
+      mainItemList: editedMainItemList
+    });
+  }
+
+  handleRestockClick = (itemToRestock) => {
+    const restockedItem = {...itemToRestock, quantity: itemToRestock.quantity += 1};
+    const editedMainItemList = this.state.mainItemList
+    .filter(item => item.id !== this.state.selectedItem.id)
+    .concat(restockedItem);
+    this.setState({
+      mainItemList: editedMainItemList
+    });
   }
 
   handleAddingNewItemToList = (newItem) => {
@@ -86,7 +96,8 @@ class ItemControl extends React.Component {
       item = {this.state.selectedItem}
       onClickingDelete = {this.handleDeletingTicket}
       onClickingEdit = {this.handleEditClick}
-      onClickingBuy= {this.handleBuyClick}/>
+      onClickingBuy = {this.handleBuyClick}
+      onClickingRestock = {this.handleRestockClick}/>
       buttonText = "Return to Item List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
