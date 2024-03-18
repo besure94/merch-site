@@ -24,6 +24,7 @@ This application presents users with a home page for a band's merch site. Users 
 * Select the green "Code" button, and clone this repository to your desktop.
 * In your terminal, go to your project folder and run the command `$ npm run start` to start a live development server.
 
+To view a diagram of the project to understand the structure of its components, go to the file `Merch-Site-Diagram.drawio.svg`.
 ## Known Bugs
 
 None.
