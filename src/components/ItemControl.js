@@ -44,9 +44,6 @@ class ItemControl extends React.Component {
     });
   }
 
-  // if user clicks "restock" first, it adds a 1 to the end of the quantity instead of increasing the quantity by 1.
-
-  // however, if user clicks "buy" first, or clicks "buy" after clicking "restock", and then clicks "restock" again, it properly increments the quantity prop by 1.
   handleRestockClick = (itemToRestock) => {
     const restockedItem = {...itemToRestock, quantity: itemToRestock.quantity += 1};
     const editedMainItemList = this.state.mainItemList
