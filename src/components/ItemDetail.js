@@ -12,7 +12,13 @@ function ItemDetail(props) {
       <h4>Color: {item.color}</h4>
       <h4>Size: {item.size}</h4>
       <h4>Quantity: {item.quantity}</h4>
-      <button onClick={() => onClickingBuy(item)}>Buy</button>
+
+      {item.quantity === 0 ? (
+        <h1>Out of stock</h1>
+      ) : (
+        <button onClick={() => onClickingBuy(item)}>Buy</button>
+      )}
+
       <br/>
       <button onClick={() => onClickingRestock(item)}>Restock</button>
       <br/>

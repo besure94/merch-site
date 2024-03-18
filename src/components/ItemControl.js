@@ -21,7 +21,7 @@ class ItemControl extends React.Component {
       this.setState({
         formVisibleOnPage: false,
         selectedItem: null,
-        editing: false
+        editing: false,
       });
     } else {
       this.setState(prevState => ({
