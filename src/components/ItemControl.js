@@ -12,7 +12,7 @@ class ItemControl extends React.Component {
       formVisibleOnPage: false,
       mainItemList: [],
       selectedItem: null,
-      editing: false
+      editing: false,
     };
   }
 
@@ -32,6 +32,16 @@ class ItemControl extends React.Component {
 
   handleEditClick = () => {
     this.setState({editing: true});
+  }
+
+  handleBuyClick = (itemToBuy) => {
+    const boughtItem = {...itemToBuy, quantity: itemToBuy.quantity -= 1};
+    const editedMainItemList = this.state.mainItemList
+    .filter(item => item.id !== this.state.selectedItem.id)
+    .concat(boughtItem);
+    this.setState({
+      mainItemList: editedMainItemList,
+    })
   }
 
   handleAddingNewItemToList = (newItem) => {
@@ -75,7 +85,8 @@ class ItemControl extends React.Component {
       currentlyVisibleState = <ItemDetail
       item = {this.state.selectedItem}
       onClickingDelete = {this.handleDeletingTicket}
-      onClickingEdit = {this.handleEditClick}/>
+      onClickingEdit = {this.handleEditClick}
+      onClickingBuy= {this.handleBuyClick}/>
       buttonText = "Return to Item List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>
