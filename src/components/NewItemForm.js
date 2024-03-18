@@ -11,7 +11,7 @@ function NewItemForm(props) {
       description: event.target.description.value,
       color: event.target.color.value,
       size: event.target.size.value,
-      quantity: event.target.quantity.value,
+      quantity: parseInt(event.target.quantity.value),
       id: v4()
     });
   }
