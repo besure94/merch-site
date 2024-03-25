@@ -7,6 +7,10 @@ import reducer from './reducers/merch-site-reducer';
 import { Provider } from 'react-redux';
 const store = createStore(reducer);
 
+store.subscribe(() =>
+  console.log(store.getState())
+);
+
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 root.render(
