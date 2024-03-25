@@ -74,4 +74,28 @@ describe('merchSiteReducer', () => {
       }
     });
   });
+
+  test("Should successfully decrease an item's quantity by 1 when it is bought by a user.", () => {
+    const { name, description, color, size, quantity, id } = itemData;
+    action = {
+      type: 'BUY_ITEM',
+      name: name,
+      description: description,
+      color: color,
+      size: size,
+      quantity: quantity,
+      id: id
+    };
+
+    expect(merchSiteReducer({}, action)).toEqual({
+      [id] : {
+        name: name,
+        description: description,
+        color: color,
+        size: size,
+        quantity: 4,
+        id: id
+      }
+    });
+  });
 });
