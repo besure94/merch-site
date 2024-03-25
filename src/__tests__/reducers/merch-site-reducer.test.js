@@ -12,6 +12,24 @@ describe('merchSiteReducer', () => {
     id: 1
   }
 
+  const currentState = {
+    1: {
+      name: 'Pentagram tee',
+      description: 'Black shirt with small pentagram design.',
+      color: 'Black',
+      size: 'Medium',
+      quantity: 3,
+      id: 1
+    }, 2: {
+      name: 'Rose and skull hoodie',
+      description: 'Black hoodie with red and white design.',
+      color: 'Black',
+      size: 'Large',
+      quantity: 5,
+      id: 2
+    }
+  }
+
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(merchSiteReducer({}, {type: null})).toEqual({});
   });
@@ -36,6 +54,23 @@ describe('merchSiteReducer', () => {
         size: size,
         quantity: quantity,
         id: id
+      }
+    });
+  });
+
+  test('Should successfully delete a ticket.', () => {
+    action = {
+      type: 'DELETE_ITEM',
+      id: 1
+    };
+    expect(merchSiteReducer(currentState, action)).toEqual({
+      2: {
+        name: 'Rose and skull hoodie',
+        description: 'Black hoodie with red and white design.',
+        color: 'Black',
+        size: 'Large',
+        quantity: 5,
+        id: 2
       }
     });
   });
