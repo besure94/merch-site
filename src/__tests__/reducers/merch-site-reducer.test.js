@@ -87,15 +87,13 @@ describe('merchSiteReducer', () => {
       id: id
     };
 
-    expect(merchSiteReducer({}, action)).toEqual({
-      [id] : {
-        name: name,
-        description: description,
-        color: color,
-        size: size,
-        quantity: 4,
-        id: id
-      }
+    expect(merchSiteReducer(itemData, action)).toEqual({
+      name: name,
+      description: description,
+      color: color,
+      size: size,
+      quantity: 4,
+      id: id
     });
   });
 });

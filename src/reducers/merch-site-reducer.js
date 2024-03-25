@@ -16,6 +16,10 @@ const reducer = (state = {}, action) => {
     let newState = {...state};
     delete newState[id];
     return newState;
+  case 'BUY_ITEM':
+    let boughtItem = {...state};
+    boughtItem.quantity -= 1;
+    return boughtItem;
   default:
     return state;
   }
