@@ -20,6 +20,10 @@ const reducer = (state = {}, action) => {
     let boughtItem = {...state};
     boughtItem.quantity -= 1;
     return boughtItem;
+  case 'RESTOCK_ITEM':
+    let restockedItem = {...state};
+    restockedItem.quantity += 25;
+    return restockedItem;
   default:
     return state;
   }

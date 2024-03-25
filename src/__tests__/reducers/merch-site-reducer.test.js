@@ -12,6 +12,15 @@ describe('merchSiteReducer', () => {
     id: 1
   }
 
+  const outOfStockItem = {
+    name: 'Skull and crossbones sweater',
+    description: 'Black sweater with white design.',
+    color: 'Black',
+    size: 'Small',
+    quantity: 0,
+    id: 1
+  }
+
   const currentState = {
     1: {
       name: 'Pentagram tee',
@@ -94,6 +103,28 @@ describe('merchSiteReducer', () => {
       size: size,
       quantity: 4,
       id: id
+    });
+  });
+
+  test("Should successfully increase an item's quantity by 25 when it is restocked by a user.", () => {
+    const { name, description, color, size, quantity, id } = outOfStockItem;
+    action = {
+      type: 'RESTOCK_ITEM',
+      name: name,
+      description: description,
+      color: color,
+      size: size,
+      quantity: quantity,
+      id: id
+    };
+
+    expect(merchSiteReducer(outOfStockItem, action)).toEqual({
+      name: 'Skull and crossbones sweater',
+      description: 'Black sweater with white design.',
+      color: 'Black',
+      size: 'Small',
+      quantity: 25,
+      id: 1
     });
   });
 });
