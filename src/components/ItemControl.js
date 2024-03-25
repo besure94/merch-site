@@ -3,6 +3,7 @@ import NewItemForm from "./NewItemForm";
 import ItemList from "./ItemList";
 import ItemDetail from "./ItemDetail";
 import EditItemForm from "./EditItemForm";
+import { connect } from 'react-redux';
 
 class ItemControl extends React.Component {
 
@@ -34,6 +35,7 @@ class ItemControl extends React.Component {
     this.setState({editing: true});
   }
 
+  // modify? //
   handleBuyClick = (itemToBuy) => {
     const boughtItem = {...itemToBuy, quantity: itemToBuy.quantity -= 1};
     const editedMainItemList = this.state.mainItemList
@@ -44,6 +46,7 @@ class ItemControl extends React.Component {
     });
   }
 
+  // modify? //
   handleRestockClick = (itemToRestock) => {
     const restockedItem = {...itemToRestock, quantity: itemToRestock.quantity += 25};
     const editedMainItemList = this.state.mainItemList
@@ -54,6 +57,7 @@ class ItemControl extends React.Component {
     });
   }
 
+  // modify //
   handleAddingNewItemToList = (newItem) => {
     const newMainItemList = this.state.mainItemList.concat(newItem);
     this.setState({mainItemList: newMainItemList, formVisibleOnPage: false });
@@ -64,6 +68,7 @@ class ItemControl extends React.Component {
     this.setState({selectedItem: selectedItem});
   }
 
+  // modify //
   handleDeletingTicket = (id) => {
     const newMainItemList = this.state.mainItemList.filter(item => item.id !== id);
     this.setState({
@@ -72,6 +77,7 @@ class ItemControl extends React.Component {
     });
   }
 
+  // modify //
   handleEditingItemInList = (itemToEdit) => {
     const editedMainItemList = this.state.mainItemList
     .filter(item => item.id !== this.state.selectedItem.id)
@@ -116,5 +122,7 @@ class ItemControl extends React.Component {
   }
 
 }
+
+ItemControl = connect()(ItemControl);
 
 export default ItemControl;
