@@ -35,6 +35,7 @@ class ItemControl extends React.Component {
     this.setState({editing: true});
   }
 
+  // BUY_ITEM and RESTOCK_ITEM actions do not currently work //
   handleBuyClick = (itemToBuy) => {
     const boughtItem = {...itemToBuy, quantity: itemToBuy.quantity -= 1};
     const editedMainItemList = this.state.mainItemList
@@ -45,6 +46,7 @@ class ItemControl extends React.Component {
     });
   }
 
+  // BUY_ITEM and RESTOCK_ITEM actions do not currently work //
   handleRestockClick = (itemToRestock) => {
     const restockedItem = {...itemToRestock, quantity: itemToRestock.quantity += 25};
     const editedMainItemList = this.state.mainItemList

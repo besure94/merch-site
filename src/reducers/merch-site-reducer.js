@@ -16,6 +16,7 @@ const reducer = (state = {}, action) => {
     let newState = {...state};
     delete newState[id];
     return newState;
+  // BUY_ITEM and RESTOCK_ITEM actions do not currently work //
   case 'BUY_ITEM':
     if (state[id]) {
       let boughtItem = {
