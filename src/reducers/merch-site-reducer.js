@@ -17,9 +17,17 @@ const reducer = (state = {}, action) => {
     delete newState[id];
     return newState;
   case 'BUY_ITEM':
-    let boughtItem = {...state};
-    boughtItem.quantity -= 1;
-    return boughtItem;
+    if (state[id]) {
+      let boughtItem = {
+        ...state[id],
+        quantity: state[id].quantity - 1
+      };
+      return {
+        ...state,
+        [id]: boughtItem
+      };
+    }
+    return state;
   case 'RESTOCK_ITEM':
     let restockedItem = {...state};
     restockedItem.quantity += 25;

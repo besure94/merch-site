@@ -36,25 +36,23 @@ class ItemControl extends React.Component {
   }
 
   handleBuyClick = (itemToBuy) => {
-    const { dispatch } = this.props;
-    const { id, quantity } = itemToBuy;
-    const action = {
-      type: 'BUY_ITEM',
-      id: id,
-      quantity: quantity
-    }
-    dispatch(action.quantity -= 1);
+    const boughtItem = {...itemToBuy, quantity: itemToBuy.quantity -= 1};
+    const editedMainItemList = this.state.mainItemList
+    .filter(item => item.id !== this.state.selectedItem.id)
+    .concat(boughtItem);
+    this.setState({
+      mainItemList: editedMainItemList
+    });
   }
 
   handleRestockClick = (itemToRestock) => {
-    const { dispatch } = this.props;
-    const { id, quantity } = itemToRestock;
-    const action = {
-      type: 'RESTOCK_ITEM',
-      id: id,
-      quantity: quantity
-    }
-    dispatch(action.quantity += 25);
+    const restockedItem = {...itemToRestock, quantity: itemToRestock.quantity += 25};
+    const editedMainItemList = this.state.mainItemList
+    .filter(item => item.id !== this.state.selectedItem.id)
+    .concat(restockedItem);
+    this.setState({
+      mainItemList: editedMainItemList
+    });
   }
 
   handleAddingNewItemToList = (newItem) => {
