@@ -1,8 +1,8 @@
 import React from "react";
-import NewItemForm from "./NewItemForm";
+import NewItemForm from "../form/NewItemForm";
 import ItemList from "./ItemList";
 import ItemDetail from "./ItemDetail";
-import EditItemForm from "./EditItemForm";
+import EditItemForm from "../form/EditItemForm";
 
 class ItemControl extends React.Component {
 

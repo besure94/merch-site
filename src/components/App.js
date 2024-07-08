@@ -1,7 +1,6 @@
-import './App.css';
 import React from "react";
 import Header from './Header';
-import ItemControl from './ItemControl';
+import ItemControl from "./item/ItemControl";
 
 function App() {
   return (
