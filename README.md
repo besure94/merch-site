@@ -61,7 +61,9 @@ Copyright(c) 2024 Brian Scherner
   * Should collapse and expand
   * Should be dynamically updated when customer adds/removes item
 
-* Will need different forms to submit for customer and owner roles
+* Owner role will need a form that conditionally renders different fields depending on item type.
+
+* Customer role will need a form that contains a size and quantity if it is apparel, and a quantity if it's music or an accessory.
 
 #### Stretch Goals
 
