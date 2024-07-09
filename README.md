@@ -38,7 +38,7 @@ Copyright(c) 2024 Brian Scherner
 
 #### Project MVP
 
-* authorization/authentication with Firebase
+* authorization/authentication with Firebase (Do first)
 
 * different authorization roles:
 
