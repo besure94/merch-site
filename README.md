@@ -49,10 +49,10 @@ Copyright(c) 2024 Brian Scherner
 
 * Different sections in app for different types of merch:
 
-  * Outerwear (shirts, hoodies, etc)
+  * Shirts
+  * Hoodies
   * Music (Vinyl, CDs, cassettes, etc)
   * Accessories (Pins, patches, etc)
-  * All Products
 
 * Search feature (for customer and owner)
 
