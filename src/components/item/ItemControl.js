@@ -3,6 +3,7 @@ import NewItemForm from "../form/NewItemForm";
 import ItemList from "./ItemList";
 import ItemDetail from "./ItemDetail";
 import EditItemForm from "../form/EditItemForm";
+import { db, auth } from '../../firebase.js';
 
 function ItemControl() {
 

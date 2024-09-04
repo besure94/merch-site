@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "../../firebase.js";
+import { auth, db } from "../../firebase.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -21,31 +21,39 @@ function SignUp() {
   //   return () => unsubscribe();
   // }, []);
 
-  function doSignUp(event) {
+  function doSignUp (event) {
     event.preventDefault();
     const email = event.target.email.value;
-    console.log("Email: ", email);
     const password = event.target.password.value;
-    console.log("PW: ", password);
     const confirmPassword = event.target.confirmPassword.value;
-    console.log("CPW: ", confirmPassword);
-    if (password === confirmPassword) {
-      createUserWithEmailAndPassword(auth, email, password)
+
+    if (password !== confirmPassword) {
+      setSignUpSuccess(`Passwords do not match. Please try again.`);
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // setDoc(doc(db, "users", userCredential.uid), {
-        //   uid: userCredential.uid,
-        //   email: userCredential.email,
-        //   role: "customer"
-        // });
-        setSignUpSuccess(`Welcome! You've successfully signed up as ${userCredential.user.email}.`);
+        // Successfully created user with email and password
+        // Now set the user's role in Firestore
+        setDoc(doc(db, "users", userCredential.user.uid), {
+          uid: userCredential.user.uid,
+          email: userCredential.user.email,
+          role: "customer"  // Default role is "customer"
+        })
+        .then(() => {
+          setSignUpSuccess(`Welcome! You've successfully signed up as ${userCredential.user.email}.`);
+        })
+        .catch((error) => {
+          // Handle errors for setting document in Firestore
+          setSignUpSuccess(`Error when setting user data in Firestore: ${error.message}`);
+        });
       })
       .catch((error) => {
+        // Handle errors for user creation in Auth
         setSignUpSuccess(`There was an error signing up: ${error.message}`);
       });
-    } else {
-      setSignUpSuccess(`Passwords do not match. Please try again.`);
-    }
-  }
+  };
 
   function doSignIn(event) {
     event.preventDefault();
