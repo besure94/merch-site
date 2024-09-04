@@ -17,3 +17,7 @@ code {
 .app-header {
   text-align: center;
 }
+
+.app-link {
+  padding-right: 0.45rem;
+}
