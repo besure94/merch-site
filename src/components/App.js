@@ -3,7 +3,7 @@ import Header from './Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ItemControl from "./item/ItemControl";
 import SignUp from './auth/SignUp';
-import Item from "./item/Item";
+import AdminPanel from "./auth/AdminPanel";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/items" element={<ItemControl/>}/>
           <Route path="/sign-up" element={<SignUp/>}/>
+          <Route path="/admin-panel" element={<AdminPanel/>}/>
         </Routes>
       </React.Fragment>
     </Router>

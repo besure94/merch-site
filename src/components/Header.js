@@ -7,6 +7,7 @@ function Header() {
       <h1>Band Merch Site</h1>
       <NavLink className="app-link" to="/items">Items</NavLink>
       <NavLink className="app-link" to="/sign-up">Sign Up</NavLink>
+      <NavLink className="app-link" to="/admin-panel">Admin Panel</NavLink>
     </div>
   );
 }

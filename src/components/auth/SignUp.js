@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../firebase.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 function SignUp() {
   // const [userSignedUp, setUserSignedUp] = useState(false);
@@ -20,6 +20,23 @@ function SignUp() {
 
   //   return () => unsubscribe();
   // }, []);
+
+  // async function isAdmin() {
+  //   const userDoc = await getDoc(doc(db, "users", auth.currentUser.uid));
+  //   return userDoc.exists() && userDoc.data().role === "admin";
+  // }
+
+  // async function grantAdminRole(userId) {
+  //   const isAdminUser = await isAdmin();
+  //   if (isAdminUser) {
+  //     await updateDoc(doc(db, "users", userId), {
+  //       role: "admin"
+  //     });
+  //     console.log("Admin role granted successfully.");
+  //   } else {
+  //     console.error("Access denied. Only admins can grant admin role.");
+  //   }
+  // }
 
   function doSignUp (event) {
     event.preventDefault();
